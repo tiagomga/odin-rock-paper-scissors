@@ -62,13 +62,13 @@ function game() {
     }
 }
 
-while (true) {
-    game();
-    answer = prompt("Repeat? (y/n)").toLowerCase();
-    if (answer.localeCompare("y") === 0) {
-        playerScore = 0;
-        computerScore = 0;
-    } else {
-        break;
-    }
-}
+const startButton = document.querySelector('#game');
+
+startButton.addEventListener('click', () => {
+    const rock = document.querySelector('#rock');
+    const paper = document.querySelector('#paper');
+    const scissors = document.querySelector('#scissors');
+    rock.disabled = false;
+    paper.disabled = false;
+    scissors.disabled = false;
+});
