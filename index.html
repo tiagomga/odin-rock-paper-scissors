@@ -4,9 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="./script.js"></script>
+    <link rel="stylesheet" href="./styles.css">
     <title>Rock Paper Scissors</title>
 </head>
 <body>
-    
+    <div class="container">
+        <h1>Rock Paper Scissors!</h1>
+        <h3>Human vs. Computer</h3>
+        <button id="game">Start</button>
+        <div class="actions">
+            <button id="rock">&#x26F0;</button>
+            <button id="paper">&#x1F4C4;</button>
+            <button id="scissors">&#x2702;</button>
+        </div>
+        <div class="score">
+            <span>Human: <span id="human">0</span></span>
+            <span>Computer: <span id="computer">0</span></span>
+        </div>
+    </div>
 </body>
 </html>
