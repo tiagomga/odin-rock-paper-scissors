@@ -40,7 +40,7 @@ function getComputerChoice() {
 }
 
 function updateScore() {
-    const player = docuemnt.querySelector("#human");
+    const player = document.querySelector("#human");
     const computer = document.querySelector("#computer");
     player.textContent = playerScore;
     computer.textContent = computerScore;
