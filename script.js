@@ -54,6 +54,14 @@ function isFinished() {
     return false;
 }
 
+function toggleDisabledState(button) {
+    if (button.disabled === true) {
+        button.disabled = false;
+    } else {
+        button.disabled = true;
+    }
+}
+
 function game() {
     for (let i = 0; i < 5; i++) {
         let playerSelection = prompt("Rock, paper or scissors?").toLowerCase();
@@ -78,27 +86,54 @@ function game() {
 }
 
 const startButton = document.querySelector('#game');
+const resetButton = document.querySelector('#reset');
 const rock = document.querySelector('#rock');
 const paper = document.querySelector('#paper');
 const scissors = document.querySelector('#scissors');
 
 startButton.addEventListener("click", () => {
-    rock.disabled = false;
-    paper.disabled = false;
-    scissors.disabled = false;
-    startButton.disabled = true;
+    if (playerScore === NUM_ROUNDS || computerScore === NUM_ROUNDS) {
+        const player = document.querySelector("#human");
+        const computer = document.querySelector("#computer");
+        player.textContent = 0;
+        computer.textContent = 0;
+    }
+    toggleDisabledState(rock);
+    toggleDisabledState(paper);
+    toggleDisabledState(scissors);
+    toggleDisabledState(startButton);
+});
+
+resetButton.addEventListener("click", () => {
+    playerScore = 0;
+    computerScore = 0;
+    updateScore();
+    document.querySelector(".result").textContent = "";
+    if (rock.disabled === true) {
+        toggleDisabledState(rock);
+        toggleDisabledState(paper);
+        toggleDisabledState(scissors);
+    }
 });
 
 document.addEventListener("click", (event) => {
     let computerChoice = getComputerChoice();
     console.log(playRound(event.target.id, computerChoice));
     updateScore();
+    
     const resultDiv = document.querySelector('.result');
-    const result = document.createElement('span');
-    if (playerScore === NUM_ROUNDS) {
-        result.textContent = 'YOU WON!';
-    } else if (computerScore === NUM_ROUNDS) {
-        result.textContent = 'YOU LOST! BETTER LUCK NEXT TIME!'
+    
+    if (isFinished()) {
+        if (rock.disabled === false) {
+            resetButton.disabled = false;
+            toggleDisabledState(rock);
+            toggleDisabledState(paper);
+            toggleDisabledState(scissors);
+        }
+        if (playerScore === NUM_ROUNDS) {
+            resultDiv.textContent = "YOU WON!";
+        } else if (computerScore === NUM_ROUNDS) {
+            resultDiv.textContent = "YOU LOST! BETTER LUCK NEXT TIME!";
+        }
     }
-    resultDiv.appendChild(result);
 });
