@@ -62,29 +62,6 @@ function toggleDisabledState(button) {
     }
 }
 
-function game() {
-    for (let i = 0; i < 5; i++) {
-        let playerSelection = prompt("Rock, paper or scissors?").toLowerCase();
-
-        while (playerSelection.localeCompare("rock") !== 0 &&
-                playerSelection.localeCompare("paper") !== 0 &&
-                playerSelection.localeCompare("scissors") !== 0) {
-            playerSelection = prompt("Invalid input! Rock, paper or scissors?").toLowerCase();
-        }
-
-        let computerSelection = getComputerChoice();
-        console.log(playRound(playerSelection, computerSelection));
-    }
-
-    if (playerScore > computerScore) {
-        console.log("Congratulations! You won!");
-    } else if (playerScore === computerScore) {
-        console.log("It's a tie!");
-    } else {
-        console.log("Boohoo! You lost!");
-    }
-}
-
 const startButton = document.querySelector('#game');
 const resetButton = document.querySelector('#reset');
 const rock = document.querySelector('#rock');
