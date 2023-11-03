@@ -47,6 +47,13 @@ function updateScore() {
     computer.textContent = computerScore;
 }
 
+function isFinished() {
+    if (playerScore === NUM_ROUNDS || computerScore === NUM_ROUNDS) {
+        return true;
+    }
+    return false;
+}
+
 function game() {
     for (let i = 0; i < 5; i++) {
         let playerSelection = prompt("Rock, paper or scissors?").toLowerCase();
