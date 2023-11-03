@@ -1,5 +1,6 @@
 let playerScore = 0;
 let computerScore = 0;
+const NUM_ROUNDS = 5;
 
 function playRound(playerSelection, computerSelection) {
     if (playerSelection.localeCompare(computerSelection) === 0) {
@@ -74,9 +75,23 @@ const rock = document.querySelector('#rock');
 const paper = document.querySelector('#paper');
 const scissors = document.querySelector('#scissors');
 
-startButton.addEventListener('click', () => {
+startButton.addEventListener("click", () => {
     rock.disabled = false;
     paper.disabled = false;
     scissors.disabled = false;
+    startButton.disabled = true;
 });
 
+document.addEventListener("click", (event) => {
+    let computerChoice = getComputerChoice();
+    console.log(playRound(event.target.id, computerChoice));
+    updateScore();
+    const resultDiv = document.querySelector('.result');
+    const result = document.createElement('span');
+    if (playerScore === NUM_ROUNDS) {
+        result.textContent = 'YOU WON!';
+    } else if (computerScore === NUM_ROUNDS) {
+        result.textContent = 'YOU LOST! BETTER LUCK NEXT TIME!'
+    }
+    resultDiv.appendChild(result);
+});
