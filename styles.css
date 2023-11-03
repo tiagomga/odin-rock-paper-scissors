@@ -47,7 +47,7 @@ button:hover {
     background-color: rgb(243, 243, 243);
 }
 
-button:focus {
+button:active {
     background-color: gainsboro;
 }
 
@@ -55,7 +55,7 @@ button:focus {
     background-color: rgb(0, 82, 170);
 }
 
-#game:focus {
+#game:active {
     background-color: rgb(0, 63, 131);
 }
 
@@ -63,7 +63,7 @@ button:focus {
     background-color: rgb(112, 112, 112);
 }
 
-#reset:focus {
+#reset:active {
     background-color: rgb(94, 94, 94);
 }
 
