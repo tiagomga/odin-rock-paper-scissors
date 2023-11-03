@@ -55,6 +55,11 @@ button:focus {
     background-color: rgb(0, 63, 131);
 }
 
+#game:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
 .container {
     display: flex;
     flex-direction: column;
