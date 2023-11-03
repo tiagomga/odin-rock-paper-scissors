@@ -1,6 +1,6 @@
 let playerScore = 0;
 let computerScore = 0;
-const NUM_ROUNDS = 5;
+const NUM_POINTS = 5;
 
 function playRound(playerSelection, computerSelection) {
     if (playerSelection.localeCompare(computerSelection) === 0) {
@@ -48,7 +48,7 @@ function updateScore() {
 }
 
 function isFinished() {
-    if (playerScore === NUM_ROUNDS || computerScore === NUM_ROUNDS) {
+    if (playerScore === NUM_POINTS || computerScore === NUM_POINTS) {
         return true;
     }
     return false;
@@ -92,7 +92,7 @@ const paper = document.querySelector('#paper');
 const scissors = document.querySelector('#scissors');
 
 startButton.addEventListener("click", () => {
-    if (playerScore === NUM_ROUNDS || computerScore === NUM_ROUNDS) {
+    if (playerScore === NUM_POINTS || computerScore === NUM_POINTS) {
         const player = document.querySelector("#human");
         const computer = document.querySelector("#computer");
         player.textContent = 0;
@@ -130,9 +130,9 @@ document.addEventListener("click", (event) => {
             toggleDisabledState(paper);
             toggleDisabledState(scissors);
         }
-        if (playerScore === NUM_ROUNDS) {
+        if (playerScore === NUM_POINTS) {
             resultDiv.textContent = "YOU WON!";
-        } else if (computerScore === NUM_ROUNDS) {
+        } else if (computerScore === NUM_POINTS) {
             resultDiv.textContent = "YOU LOST! BETTER LUCK NEXT TIME!";
         }
     }
