@@ -4,6 +4,8 @@ const NUM_POINTS = 5;
 
 function playRound(playerSelection, computerSelection) {
     if (playerSelection.localeCompare(computerSelection) === 0) {
+        playerScore++;
+        computerScore++;
         return `${playerSelection} vs. ${computerSelection}. It's a tie!`;
     } else if (playerSelection.localeCompare("rock") === 0 && computerSelection.localeCompare("paper") === 0) {
         computerScore++;
@@ -107,7 +109,9 @@ document.addEventListener("click", (event) => {
             toggleDisabledState(paper);
             toggleDisabledState(scissors);
         }
-        if (playerScore === NUM_POINTS) {
+        if (playerScore === NUM_POINTS && computerScore === NUM_POINTS) {
+            resultDiv.textContent = "IT'S A TIE!";
+        } else if (playerScore === NUM_POINTS) {
             resultDiv.textContent = "YOU WON!";
         } else if (computerScore === NUM_POINTS) {
             resultDiv.textContent = "YOU LOST! BETTER LUCK NEXT TIME!";
